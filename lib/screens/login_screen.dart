@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:school_app/screens/dashboard.dart';
+import 'package:school_app/screens/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key});
@@ -67,9 +68,6 @@ class LoginScreen extends StatelessWidget {
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               controller: usernameController,
-              onSubmitted: (val) {
-                print(val);
-              },
             ),
           ),
           Padding(
@@ -117,20 +115,30 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 15,) ,
+          const SizedBox(
+            height: 15,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("don`t have account?",style: TextStyle(
-                color: Colors.white
-              ),),
+              Text(
+                "don`t have account?",
+                style: TextStyle(color: Colors.white),
+              ),
               TextButton(
-                onPressed: () {},
-                 child: Text("signup" ,style: TextStyle(
-                  color: Color(0xff009688) ,
-                  fontSize: 18
-                 ),),
-                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SignupScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "signup",
+                  style: TextStyle(color: Color(0xff009688), fontSize: 18),
+                ),
+              ),
             ],
           )
         ],
