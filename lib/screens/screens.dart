@@ -3,3 +3,4 @@ export 'login_screen.dart';
 export 'dashboard.dart';
 export 'students_screen.dart';
 export 'student_list.dart';
+export 'classes_screen.dart';

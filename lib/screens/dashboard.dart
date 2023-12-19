@@ -61,10 +61,12 @@ class Dashboard extends StatelessWidget {
                 ),
                 Expanded(
                   child: CardBtn(
+                    title: "classes",
+                    iconData: Icons.school,
                     backgroundColor: Colors.purple,
                     textColor: Colors.white,
                     onPressed: () {
-                      // Add your onPressed logic here
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>ClassesScreen()));
                     },
                   ),
                 ),
