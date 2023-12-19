@@ -6,37 +6,46 @@ import 'package:school_app/screens/dashboard.dart';
 import 'package:school_app/screens/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key});
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
+  Future<void> login(BuildContext context) async {
+    try {
+      final response = await http.post(
+          Uri.parse("http://localhost:3000/api/login"),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode({
+            "username": usernameController.text,
+            "password": passwordController.text
+          }));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => Dashboard()));
+      } else {
+        final data = json.decode(response.body);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(data['message']),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred. Please try again.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
-    Future<void> login() async {
-      try {
-        final response = await http.post(
-            Uri.parse("http://localhost:3000/api/login"),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: jsonEncode({
-              "username": usernameController.text,
-              "password": passwordController.text
-            }));
-        if (response.statusCode == 200) {
-          final data = json.decode(response.body);
-          print(data['message']);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => Dashboard()));
-        } else {
-          final data = json.decode(response.body);
-          print(data['message']);
-        }
-      } catch (e) {
-        print(e);
-      }
-    }
-
     return Scaffold(
       backgroundColor: Color(0xff9C27B0),
       body: Column(
@@ -88,9 +97,6 @@ class LoginScreen extends StatelessWidget {
               obscureText: true,
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
-              onSubmitted: (val) {
-                print(val);
-              },
               controller: passwordController,
             ),
           ),
@@ -98,7 +104,7 @@ class LoginScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton.icon(
               onPressed: () {
-                login();
+                login(context);
               },
               icon: Icon(Icons.key),
               label: Text(
@@ -122,7 +128,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "don`t have account?",
+                "Don't have an account?",
                 style: TextStyle(color: Colors.white),
               ),
               TextButton(
@@ -135,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  "signup",
+                  "Signup",
                   style: TextStyle(color: Color(0xff009688), fontSize: 18),
                 ),
               ),

@@ -5,6 +5,7 @@ class CardBtn extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
+  final Color iconColor;
   final VoidCallback onPressed;
 
   const CardBtn({
@@ -13,6 +14,7 @@ class CardBtn extends StatelessWidget {
     this.title = "Button",
     this.backgroundColor = Colors.white,
     this.textColor = Colors.black,
+    this.iconColor = Colors.black,
     required this.onPressed,
   }) : super(key: key);
 
@@ -36,7 +38,7 @@ class CardBtn extends StatelessWidget {
                 Icon(
                   iconData,
                   size: 32.0,
-                  color: textColor,
+                  color: iconColor,
                 ),
                 const SizedBox(height: 8.0),
                 Text(

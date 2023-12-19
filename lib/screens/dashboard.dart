@@ -20,13 +20,15 @@ class Dashboard extends StatelessWidget {
               children: [
                 Expanded(
                   child: CardBtn(
-                    iconData: Icons.add,
-                    title: "Register now!",
+                    
+                    iconData: Icons.book,
+                    title: "Students!",
                     backgroundColor: Colors.blue,
                     textColor: Colors.white,
+                    iconColor: Colors.green,
                     onPressed: () {
                       // Add your onPressed logic here
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>StudentsScreen()));
                     },
                   ),
                 ),
