@@ -22,7 +22,7 @@ class CardBtn extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 9 ,horizontal: 5),
       child: Card(
         color: backgroundColor,
-        elevation: 5.0,
+        elevation: 9.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(13.0),
         ),
