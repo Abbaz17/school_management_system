@@ -20,7 +20,6 @@ class Dashboard extends StatelessWidget {
               children: [
                 Expanded(
                   child: CardBtn(
-                    
                     iconData: Icons.book,
                     title: "Students!",
                     backgroundColor: Colors.blue,
@@ -28,16 +27,21 @@ class Dashboard extends StatelessWidget {
                     iconColor: Colors.green,
                     onPressed: () {
                       // Add your onPressed logic here
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>StudentsScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => StudentsScreen()));
                     },
                   ),
                 ),
                 Expanded(
                   child: CardBtn(
+                    title: "Teachers!",
+                    iconData: Icons.text_fields,
                     backgroundColor: Colors.orange,
                     textColor: Colors.white,
                     onPressed: () {
                       // Add your onPressed logic here
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => TeacherScreen()));
                     },
                   ),
                 ),
@@ -66,7 +70,8 @@ class Dashboard extends StatelessWidget {
                     backgroundColor: Colors.purple,
                     textColor: Colors.white,
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>ClassesScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ClassesScreen()));
                     },
                   ),
                 ),
@@ -100,9 +105,20 @@ class Dashboard extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+              onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen())),
+              icon: Icon(Icons.backspace),
+              label: Text("Logout"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 }
-
