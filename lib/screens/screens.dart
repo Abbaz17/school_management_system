@@ -6,3 +6,5 @@ export 'student_list.dart';
 export 'classes_screen.dart';
 export 'teachers_screen.dart';
 export 'teacher_list.dart';
+export 'report_screen.dart';
+export 'teacher_report.dart';

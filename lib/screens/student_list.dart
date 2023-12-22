@@ -56,7 +56,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
                   DataColumn(label: Text('Age')),
                   DataColumn(label: Text('Faculty')),
                   DataColumn(label: Text('Class')),
-                  DataColumn(label: Text('Parent ID')),
+                  DataColumn(label: Text('DDAY')),
                 ],
                 rows: snapshot.data!.map<DataRow>((student) {
                   return DataRow(
@@ -67,7 +67,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
                       DataCell(Text(student['stdAge'].toString())),
                       DataCell(Text(student['stdFoculty'].toString())),
                       DataCell(Text(student['stdClass'].toString())),
-                      DataCell(Text(student['parentId'].toString())),
+                      DataCell(Text(student['DDAY'].toString())),
                     ],
                   );
                 }).toList(),

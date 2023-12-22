@@ -50,7 +50,7 @@ class _StudentRegistrationState extends State<StudentRegistration> {
         "stdAge": stdAgeController.text,
         "stdFoculty": stdFacultyController.text,
         "stdClass": stdClassController.text,
-        "parentId": parentIdController.text
+        "DDAY": parentIdController.text
       }),
     );
     if (response.statusCode == 200) {
@@ -98,7 +98,7 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
         stdAgeController.text = studentData['stdAge'].toString();
         stdFacultyController.text = studentData['stdFoculty'].toString();
         stdClassController.text = studentData['stdClass'].toString();
-        parentIdController.text = studentData['parentId'].toString();
+        parentIdController.text = studentData['DDAY'].toString();
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -140,7 +140,7 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
       "stdAge": stdAgeController.text,
       "stdFoculty": stdFacultyController.text,
       "stdClass": stdClassController.text,
-      "parentId": parentIdController.text,
+      "DDAY": parentIdController.text,
     };
 
     // Make the HTTP PUT request to update the student
@@ -278,7 +278,7 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
               buildTextField('Student Age', stdAgeController),
               buildTextField('Student Faculty', stdFacultyController),
               buildTextField('Student Class', stdClassController),
-              buildTextField('Parent ID', parentIdController),
+              buildTextField('DDAY', parentIdController),
               SizedBox(height: 16.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

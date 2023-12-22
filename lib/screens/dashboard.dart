@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_app/screens/parent_list.dart';
 import 'package:school_app/screens/screens.dart';
 
 import '../widgets/widgets.dart';
@@ -57,9 +58,11 @@ class Dashboard extends StatelessWidget {
                 Expanded(
                   child: CardBtn(
                     backgroundColor: Colors.green,
+                    title: "Reports",
+                    iconData: Icons.report_gmailerrorred_outlined,
                     textColor: Colors.white,
                     onPressed: () {
-                      // Add your onPressed logic here
+                      Navigator.push(context ,MaterialPageRoute(builder: (_)=>ReportScreen()));
                     },
                   ),
                 ),
@@ -86,10 +89,13 @@ class Dashboard extends StatelessWidget {
               children: [
                 Expanded(
                   child: CardBtn(
+                    title: "Parents",
                     backgroundColor: Colors.red,
                     textColor: Colors.white,
+                    iconData: Icons.female,
                     onPressed: () {
-                      // Add your onPressed logic here
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ParentsScreen()));
                     },
                   ),
                 ),
