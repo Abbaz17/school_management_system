@@ -16,11 +16,11 @@ class StudentsScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               width: 200,
               height: 200,
-              margin: EdgeInsets.only(left: 40),
               child: CardBtn(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_)=>StudentRegistration()));

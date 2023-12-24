@@ -101,10 +101,12 @@ class Dashboard extends StatelessWidget {
                 ),
                 Expanded(
                   child: CardBtn(
+                    title: "Status Screen",
+                    iconData: Icons.inbox,
                     backgroundColor: Colors.teal,
                     textColor: Colors.white,
                     onPressed: () {
-                      // Add your onPressed logic here
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>StatusScreen())) ;
                     },
                   ),
                 ),
