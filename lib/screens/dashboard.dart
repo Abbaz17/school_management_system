@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_app/screens/parent_list.dart';
 import 'package:school_app/screens/screens.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/widgets.dart';
 
@@ -92,7 +93,7 @@ class Dashboard extends StatelessWidget {
                     title: "Parents",
                     backgroundColor: Colors.red,
                     textColor: Colors.white,
-                    iconData: Icons.female,
+                    iconData: FontAwesomeIcons.peopleRobbery,
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => ParentsScreen()));

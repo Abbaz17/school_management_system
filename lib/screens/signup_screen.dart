@@ -17,6 +17,8 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController rollController = TextEditingController();
   var message = "";
   var messageColor = Colors.black;
+  bool showPassword = false;
+  bool showConfirmPassword = false;
 
   Future<void> signUp() async {
     try {
@@ -54,37 +56,39 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   bool _validateFields() {
-  if (usernameController.text.isEmpty ||
-      passwordController.text.isEmpty ||
-      confirmController.text.isEmpty ||
-      rollController.text.isEmpty) {
-    // Display a message indicating the empty field
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Please fill in all fields'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-    return false;
-  } else if (passwordController.text != confirmController.text) {
-    // Display a message indicating password mismatch
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Passwords do not match'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-    return false;
+    if (usernameController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        confirmController.text.isEmpty ||
+        rollController.text.isEmpty) {
+      // Display a message indicating the empty field
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please fill in all fields'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return false;
+    } else if (passwordController.text != confirmController.text) {
+      // Display a message indicating password mismatch
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Passwords do not match'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return false;
+    }
+    return true;
   }
-  return true;
-}
+
   // Function to clear form fields
-void clearForm() {
-  usernameController.clear();
-  passwordController.clear();
-  confirmController.clear();
-  rollController.clear();
-}
+  void clearForm() {
+    usernameController.clear();
+    passwordController.clear();
+    confirmController.clear();
+    rollController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,9 +137,9 @@ void clearForm() {
               ),
               _buildTextField("Username", usernameController),
               SizedBox(height: 10),
-              _buildTextField("Password", passwordController, isPassword: true),
+              _buildPasswordField("Password", passwordController, showPassword),
               SizedBox(height: 10),
-              _buildTextField("Confirm Password", confirmController, isPassword: true),
+              _buildPasswordField("Confirm Password", confirmController, showConfirmPassword),
               SizedBox(height: 10),
               _buildTextField("Role", rollController),
               SizedBox(height: 20),
@@ -152,13 +156,35 @@ void clearForm() {
     );
   }
 
-  Widget _buildTextField(String label, TextEditingController controller, {bool isPassword = false}) {
+  Widget _buildTextField(String label, TextEditingController controller) {
     return TextField(
       controller: controller,
-      obscureText: isPassword,
       decoration: InputDecoration(
         labelText: label,
         border: OutlineInputBorder(),
+      ),
+    );
+  }
+
+  Widget _buildPasswordField(String label, TextEditingController controller, bool show) {
+    return TextField(
+      controller: controller,
+      obscureText: !show,
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(),
+        suffixIcon: IconButton(
+          icon: Icon(show ? Icons.visibility : Icons.visibility_off),
+          onPressed: () {
+            setState(() {
+              if (label == "Password") {
+                showPassword = !showPassword;
+              } else if (label == "Confirm Password") {
+                showConfirmPassword = !showConfirmPassword;
+              }
+            });
+          },
+        ),
       ),
     );
   }
