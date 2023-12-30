@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // Import for FilteringTextInputFormatter
 import 'package:http/http.dart' as http;
 
 class SignupScreen extends StatefulWidget {
@@ -157,14 +158,18 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _buildTextField(String label, TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(),
-      ),
-    );
-  }
+  return TextField(
+    controller: controller,
+    decoration: InputDecoration(
+      labelText: label,
+      border: OutlineInputBorder(),
+    ),
+    inputFormatters: [
+      FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z][a-zA-Z0-9]*$')),
+    ],
+  );
+}
+
 
   Widget _buildPasswordField(String label, TextEditingController controller, bool show) {
     return TextField(

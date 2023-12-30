@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 class StudentRegistration extends StatefulWidget {
@@ -310,16 +311,26 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
     );
   }
 
-  Widget buildTextField(String label, TextEditingController controller) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: label,
-          border: OutlineInputBorder(),
-        ),
-        controller: controller,
-      ),
-    );
+Widget buildTextField(String label, TextEditingController controller) {
+  // Define a regular expression for allowing only letters (including spaces)
+  RegExp lettersOnlyWithSpaces = RegExp(r'^[a-zA-Z ]+$');
+
+  // Use different inputFormatters based on the label
+  List<TextInputFormatter> inputFormatters = [];
+  if (label == 'Student Name' || label == 'Student Location' || label == 'Student Faculty' || label == 'DDAY' || label == 'Student Class') {
+    inputFormatters = [FilteringTextInputFormatter.allow(lettersOnlyWithSpaces)];
   }
+
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: TextField(
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(),
+      ),
+      controller: controller,
+      inputFormatters: inputFormatters,
+    ),
+  );
+}
 }
