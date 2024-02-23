@@ -46,7 +46,7 @@ class CardBtn extends StatelessWidget {
                   style: TextStyle(
                     color: textColor,
                     fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ],

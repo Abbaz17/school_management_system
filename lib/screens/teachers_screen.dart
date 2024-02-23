@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:school_app/screens/teacher_registration.dart';
 import 'package:school_app/widgets/card_btn.dart';
 
 import 'screens.dart';
 import 'student_registration.dart';
 
-class StudentsScreen extends StatelessWidget {
-  const StudentsScreen({super.key});
+class TeacherScreen extends StatelessWidget {
+  const TeacherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.brown,
-          title: Text("Students"),
+          backgroundColor: Colors.brown.shade400,
+          title: Text("Teachers"),
           centerTitle: true,
         ),
         body: Row(
@@ -24,10 +25,10 @@ class StudentsScreen extends StatelessWidget {
               height: 200,
               child: CardBtn(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>StudentRegistration()));
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>TeacherRegistration()));
                 } ,
                 backgroundColor: Colors.brown.shade400,
-                title: "Register Student",
+                title: "Register Teacher",
                 iconData: Icons.app_registration,
                 )
                 ,
@@ -37,10 +38,10 @@ class StudentsScreen extends StatelessWidget {
               height: 200,
               child: CardBtn(
                 onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (_)=>StudentListScreen()));
+                   Navigator.push(context, MaterialPageRoute(builder: (_)=>TeacherList()));
                 } ,
                 backgroundColor: Colors.brown.shade400,
-                title: "All students",
+                title: "All Teachers",
                 iconData: Icons.read_more_sharp,
                 ),
             ),

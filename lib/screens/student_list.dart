@@ -32,6 +32,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.brown,
         title: Text('Student List'),
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(

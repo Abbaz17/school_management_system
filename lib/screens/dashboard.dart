@@ -12,6 +12,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.brown,
         title: Text("Dashboard"),
         centerTitle: true,
       ),
@@ -117,7 +118,7 @@ class Dashboard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton.icon(
-              onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen())),
+              onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreenF())),
               icon: Icon(Icons.backspace),
               label: Text("Logout"),
               style: ElevatedButton.styleFrom(

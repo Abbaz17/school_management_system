@@ -3,13 +3,22 @@ import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/screens.dart';
 import 'screens/teacher_registration.dart';
+  import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+
+
+// ...
+
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key}); 
 
   // This widget is the root of your application.
   @override
@@ -18,9 +27,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xff3498db)
+        primaryColor: Color.fromARGB(255, 86, 87, 88)
       ),
-      home: LoginScreen()
+      home: LoginScreenF() 
     );
   }
 }

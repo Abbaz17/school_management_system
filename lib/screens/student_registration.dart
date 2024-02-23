@@ -254,6 +254,7 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.brown,
         title: Text('Student Form'),
       ),
       body: Container(
@@ -285,18 +286,34 @@ Future<void> loadStudentDataById(TextEditingController stdIdController) async {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                    primary: Colors.brown, // Background color
+                    elevation: 5.0, // Elevation value
+                  ),
                     onPressed: addStd,
                     child: Text('Add'),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                    primary: Colors.brown, // Background color
+                    elevation: 5.0, // Elevation value
+                  ),
                     onPressed: deleteStd,
                     child: Text('Delete'),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                    primary: Colors.brown, // Background color
+                    elevation: 5.0, // Elevation value
+                  ),
                     onPressed: updateStd,
                     child: Text('Update'),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                    primary: Colors.brown, // Background color
+                    elevation: 5.0, // Elevation value
+                  ),
                     onPressed: (){
                       loadStudentDataById(stdIdController) ;
                     },
